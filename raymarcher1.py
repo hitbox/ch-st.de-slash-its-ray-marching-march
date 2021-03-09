@@ -49,23 +49,18 @@ class Shader:
 
         x = Vector3(pos.x + dt, pos.y, pos.z)
         dx = surface_distance(x) - current_val
-
         y = Vector3(pos.x, pos.y + dt, pos.z)
         dy = surface_distance(y) - current_val
-
         z = Vector3(pos.x, pos.y, pos.z + dt)
         dz = surface_distance(z) - current_val
-
         # normal
         N = Vector3(
             (dx - pos.x) / dt,
             (dy - pos.y) / dt,
             (dz - pos.z) / dt,
         )
-
         if N.length() < 1e-9:
             return PIXELS[0]
-
         N = N.normalize()
         diffuse = L.x * N.x + L.y * N.y + L.z * N.z
         diffuse = (diffuse + 1) / 2 * len(PIXELS)
