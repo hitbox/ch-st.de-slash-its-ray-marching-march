@@ -21,7 +21,7 @@ N = 8
 for x in range(N+1):
     p = x / N
     c = int(p * 255)
-    PIXELS.append(Color(c,c,c))
+    PIXELS.append(Color(c,)*3)
 
 t = 0
 
@@ -79,9 +79,8 @@ def draw(rect, surface, position, shader):
             ray = target - pos
             ray.normalize()
             pixel = PIXELS[0]
-            max_ = 9999.0
-            max_ = 5
-            for i in range(15_000):
+            max_ = 9_999
+            for _ in range(15_000):
                 if (fabs(pos.x) > max_
                         or fabs(pos.y) > max_
                         or fabs(pos.z) > max_):
